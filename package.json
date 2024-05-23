@@ -6,16 +6,23 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon app/index.js ",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel app --out-dir dist",
+    "swagger": "node ./app/tool/swagger.js",
+    "start": "node app/index.js"
   },
   "keywords": [],
   "author": "Angie",
   "license": "ISC",
   "dependencies": {
+    "build": "^0.1.4",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "mysql2": "^3.9.7",
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "run": "^1.5.0",
+    "swagger": "^0.7.5",
+    "swagger-autogen": "^2.23.7",
+    "swagger-ui-express": "^5.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.24.5",

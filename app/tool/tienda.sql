@@ -1,0 +1,97 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 23-05-2024 a las 16:21:09
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.0.30
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `tienda`
+--
+CREATE DATABASE IF NOT EXISTS `tienda` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `tienda`;
+
+DELIMITER $$
+--
+-- Procedimientos
+--
+DROP PROCEDURE IF EXISTS `SP_ACTUALIZAR`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_ACTUALIZAR` (IN `_ID` INT(11), IN `_VALOR` VARCHAR(200))   BEGIN
+
+UPDATE pago SET VALOR = _VALOR
+WHERE ID = _ID;
+
+END$$
+
+DROP PROCEDURE IF EXISTS `SP_CREAR`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_CREAR` (IN `_NOMBRE` VARCHAR(200), IN `_VALOR` VARCHAR(200))   BEGIN
+
+INSERT INTO pago(NOMBRE, VALOR)
+VALUES (_NOMBRE, _VALOR);
+
+END$$
+
+DROP PROCEDURE IF EXISTS `SP_ELIMINAR`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_ELIMINAR` (IN `_ID` INT(11))   BEGIN
+
+DELETE FROM pago WHERE ID = _ID;
+
+END$$
+
+DROP PROCEDURE IF EXISTS `SP_LISTAR`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_LISTAR` ()   BEGIN
+
+SELECT P.NOMBRE, P.VALOR
+FROM pago P;
+
+END$$
+
+DROP PROCEDURE IF EXISTS `SP_MOSTRAR`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_MOSTRAR` (IN `_ID` INT(11))   BEGIN
+
+SELECT P.NOMBRE, P.VALOR
+FROM pago P 
+WHERE ID = _ID;
+
+END$$
+
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pago`
+--
+
+DROP TABLE IF EXISTS `pago`;
+CREATE TABLE IF NOT EXISTS `pago` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `NOMBRE` varchar(200) NOT NULL,
+  `VALOR` varchar(200) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `pago`
+--
+
+INSERT INTO `pago` (`ID`, `NOMBRE`, `VALOR`) VALUES
+(2, 'PULO', '33000'),
+(3, 'lolo', '88000');
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

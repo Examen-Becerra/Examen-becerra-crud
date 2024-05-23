@@ -3,10 +3,19 @@ import { actualizarPago, eliminarPago, insertarPago, listarPago, mostrarPago } f
 
 const rutaPago = Router();
 
+// para mostrar un solo pago
 rutaPago.get("/pagom/:id", mostrarPago);
+
+// para mostrar todos los pagos
 rutaPago.get("/pagol", listarPago);
+
+//para insertar un pago
 rutaPago.post("/pagoc", insertarPago);
+
+//para actualizar el valor de un pago
 rutaPago.put("/pagoa", actualizarPago);
-rutaPago.delete("/pagoe", eliminarPago)
+
+//para eliminar un pago
+rutaPago.delete("/pagoe", eliminarPago);
 
 export default rutaPago;

@@ -1,0 +1,12 @@
+4 - pago
+
+1. montarlo en github - organizacion
+2. post, get, get, put, delete
+3. crear base de datos -> tabla, minimo 1 campo
+4. exportar la db y save en el proyecto 
+5. crear collage y save en el proyecto
+6. no montar la folder node_model a git hub
+7.  construir el distribuidor - dist 
+8. Sacar apuntes
+9. el commit de entrega se llama "entrega final"
+10. copiar todas las condiciones y subirlas al proyecto
