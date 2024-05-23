@@ -34,7 +34,7 @@ export const insertarPago  = async(req, res) => {
         if (respuesta[0]. affectedRows == 1) {
             Success(req, res, 200, "El pago se ha insertado correctamente")
         } else {
-            Error(req, res, 200, "El pago no se pudo insertar correctamente")
+            Error(req, res, 400, "El pago no se pudo insertar correctamente")
             
         }
         
@@ -51,7 +51,24 @@ export const actualizarPago  = async(req, res) => {
         if (respuesta[0]. affectedRows == 1) {
             Success(req, res, 200, "El pago se ha actualizado correctamente")
         } else {
-            Error(req, res, 200, "El pago no se pudo actualizar correctamente")
+            Error(req, res, 400, "El pago no se pudo actualizar correctamente")
+            
+        }
+        
+    } catch (error) {
+        Error(req, res, 400, error)
+    }
+}
+export const eliminarPago  = async(req, res) => {
+    const {id} = req.body
+
+    try {
+        const respuesta = await db.query(`CALL SP_ELIMINAR('${id}')`);
+
+        if (respuesta[0]. affectedRows == 1) {
+            Success(req, res, 200, "El pago se ha eliminado correctamente")
+        } else {
+            Error(req, res, 400, "El pago no se pudo eliminar correctamente")
             
         }
         
